@@ -6,7 +6,7 @@ namespace Minecraft
     public class Chunk
     {
         public const int ChunkSize = 16;
-        public const int BuildHeight = 256;
+        public const int BuildHeight = 128;
         public readonly Vector2Int Position;
         public int BlockCount => blockCount;
 
@@ -29,6 +29,17 @@ namespace Minecraft
         {
             blocks.TryGetValue(blockPosition, out byte value);
             return value;
+        }
+
+        public int GetHeightAt(Vector2Int position)
+        {
+            for (int y = BuildHeight - 1; y >= 0; y--)
+            {
+                if (GetBlock(new Vector3Int(position.x, y, position.y)) != 0)
+                    return y;
+            }
+
+            return 0;
         }
     }
 }

@@ -23,6 +23,7 @@ namespace Minecraft
         {
             player.moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
             player.mouseHorizontal = Input.GetAxisRaw("Mouse X") * mouseSensitivity;
+            player.jumping = Input.GetKey(KeyCode.Space);
             cameraController.mouseVertical = -Input.GetAxisRaw("Mouse Y") * mouseSensitivity;
         }
     }
